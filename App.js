@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { MainScreen } from './MainScreen';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [train_size, setTrainSize] = useState(0);
+  const [scene_index, setSceneIndex] = useState(0);
+
+  switch (scene_index) {
+    case 0:
+      return <MainScreen
+      train_size={train_size}
+      setTrainSize={setTrainSize}
+      scene_index={scene_index}
+      setSceneIndex={setSceneIndex}/>;
+
+    default:
+      break;
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
