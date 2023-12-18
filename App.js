@@ -21,6 +21,7 @@ export default function App() {
     case 1:
       return <TrainScene
         training_count={training_count}
+        train_size={train_size}
         setTrainingCount={setTrainingCount}
         scene_index={scene_index}
         setSceneIndex={setSceneIndex}
