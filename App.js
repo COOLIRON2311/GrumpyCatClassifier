@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MainScreen } from './MainScreen';
 
 export default function App() {
-  const [train_size, setTrainSize] = useState(0);
+  const [train_size, setTrainSize] = useState(10);
   const [scene_index, setSceneIndex] = useState(0);
 
   switch (scene_index) {

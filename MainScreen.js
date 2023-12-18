@@ -21,6 +21,7 @@ export function MainScreen({ train_size, setTrainSize, scene_index, setSceneInde
         <Text style={styles.text}>Choose training set size:</Text>
         <Text style={styles.slider_value}>{train_size}</Text>
         <Slider
+          value={train_size}
           minimumValue={1}
           maximumValue={100}
           step={1}
