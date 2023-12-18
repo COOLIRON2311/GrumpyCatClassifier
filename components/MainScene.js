@@ -1,15 +1,17 @@
 import Slider from '@react-native-community/slider';
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
+import { MyButton } from './MyButton';
 
 /**
  * @param {Object} props
  * @param {number} props.train_size
- * @param {React.Dispatch<React.SetStateAction<number>>} props.setTrainSize
- *  * @param {number} props.scene_index
- * @param {React.Dispatch<React.SetStateAction<number>>} props.setSceneIndex
+ * @param {Action} props.setTrainSize
+ * @param {number} props.scene_index
+ * @param {Action} props.setSceneIndex
+ * @typedef {React.Dispatch<React.SetStateAction<number>>} Action
  * @returns
  */
-export function MainScreen({ train_size, setTrainSize, scene_index, setSceneIndex }) {
+export function MainScene({ train_size, setTrainSize, scene_index, setSceneIndex }) {
   const nextScene = () => setSceneIndex(scene_index + 1);
 
   return (
@@ -23,16 +25,17 @@ export function MainScreen({ train_size, setTrainSize, scene_index, setSceneInde
         <Slider
           value={train_size}
           minimumValue={1}
-          maximumValue={100}
+          maximumValue={20}
           step={1}
           onValueChange={v => setTrainSize(v)}>
         </Slider>
       </View>
-      <TouchableWithoutFeedback onPress={nextScene}>
-        <View style={styles.btn_frame}>
-          <Text style={styles.btn_text}>Continue</Text>
-        </View>
-      </TouchableWithoutFeedback>
+      <MyButton
+        frameStyle={styles.btn_frame}
+        textStyle={styles.btn_text}
+        text='Continue'
+        onPress={nextScene}
+      />
     </View>
   );
 }
