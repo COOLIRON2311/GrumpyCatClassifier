@@ -7,6 +7,8 @@ export default function App() {
   const [scene_index, setSceneIndex] = useState(0);
   const [true_positives, setTruePositives] = useState(0);
   const [true_negatives, setTrueNegatives] = useState(0);
+  const [positives, setPositives] = useState(0);
+  const [negatives, setNegatives] = useState(0);
   const [training_count, setTrainingCount] = useState(0);
 
   useEffect(() => setTrainingCount(train_size), [train_size]);

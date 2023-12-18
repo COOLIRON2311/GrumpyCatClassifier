@@ -17,9 +17,9 @@ export function MainScene({ train_size, setTrainSize, scene_index, setSceneIndex
   return (
     <View style={styles.container}>
       <View style={styles.text_frame}>
-        <Text style={{ ...styles.text, color: 'white' }}> Greetings, young model!</Text>
+        <Text style={{ ...styles.text, 'color': 'white' }}> Greetings, young model!</Text>
         <Text style={styles.text}>Let's teach you to classify</Text>
-        <Text style={{ ...styles.text, color: 'white', 'marginVertical': '7%' }}>grumpy cats</Text>
+        <Text style={{ ...styles.text, 'color': 'white', 'marginVertical': '7%' }}>grumpy cats</Text>
         <Text style={styles.text}>Choose training set size:</Text>
         <Text style={styles.slider_value}>{train_size}</Text>
         <Slider
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#001c60',
     borderRadius: 10,
     marginTop: '20%',
+    fontSize: 30
   },
   btn_text: {
     fontSize: 30,
