@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#3499cd',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   text: {
     fontSize: 20,
@@ -134,12 +134,13 @@ const styles = StyleSheet.create({
   },
   btn_frame: {
     borderRadius: 10,
-    marginHorizontal: '2%'
+    marginHorizontal: '2%',
   },
   btn_text: {
     fontSize: 30,
+    textAlign: 'center',
     color: 'white',
-    margin: '5%',
+    margin: '5%'
   }
 });
 
