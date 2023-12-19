@@ -10,30 +10,42 @@ import data from '../assets/cats.json'
  * @param {Action} props.setTrainingCount
  * @param {number} props.scene_index
  * @param {Action} props.setSceneIndex
- * @param {number} props.correct
- * @param {Action} props.setCorrect
- * @param {number} props.mistakes
- * @param {Action} props.setMistakes
+ * @param {number} props.positives
+ * @param {Action} props.setPositives
+ * @param {number} props.negatives
+ * @param {Action} props.setNegatives
+ * @param {number} props.true_positives
+ * @param {Action} props.setTruePositives
+ * @param {number} props.true_negatives
+ * @param {Action} props.setTrueNegatives
+ * @param {number} props.false_positives
+ * @param {Action} props.setFalsePositives
+ * @param {number} props.false_negatives
+ * @param {Action} props.setFalseNegatives
  * @typedef {React.Dispatch<React.SetStateAction<number>>} Action
  */
 export function TrainScene({ training_count, train_size, setTrainingCount, scene_index, setSceneIndex,
-  correct, setCorrect, mistakes, setMistakes }) {
+  positives, setPositives, negatives, setNegatives,
+  true_positives, setTruePositives, true_negatives, setTrueNegatives,
+  false_positives, setFalsePositives, false_negatives, setFalseNegatives }) {
   const [training_set, setTrainingSet] = useState([]);
   const [current, setCurrent] = useState(null);
 
   useEffect(() => {
     // console.log(training_count);
-    if (training_count === 0) {;
+    if (training_count === 0) {
+      ;
       setSceneIndex(scene_index + 1);
       // console.log(scene_index);
     }
   }, [training_count]);
 
   useEffect(() => {
-    const pos = data.filter(v => v.value).slice(0, train_size * 3 / 5);
-    const neg = data.filter(v => !v.value).slice(0, train_size * 2 / 5);
+    const pos = data.filter(v => v.value).slice(0, Math.floor(train_size * 3 / 5));
+    const neg = data.filter(v => !v.value).slice(0, Math.floor(train_size * 2 / 5));
     const train = shuffle(pos.concat(neg));
     setTrainingSet(train);
+    setTrainingCount(train.length);
   }, []);
 
   useEffect(() => {
@@ -49,10 +61,20 @@ export function TrainScene({ training_count, train_size, setTrainingCount, scene
   };
 
   const handleButtonPress = (value) => {
-    if (value === current.value)
-      setCorrect(correct + 1);
-    else
-      setMistakes(mistakes + 1);
+    if (value) // 1
+    {
+      setPositives(positives + 1);
+      if (current.value) // 1 1
+        setTruePositives(true_positives + 1);
+      else // 1 0
+        setFalsePositives(false_positives + 1);
+    } else {
+      setNegatives(negatives + 1);
+      if (!current.value) // 0 0
+        setTrueNegatives(true_negatives + 1);
+      else // 0 1
+        setFalseNegatives(false_negatives + 1);
+    }
     setTrainingCount(training_count - 1);
   };
 
