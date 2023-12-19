@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import { MyButton } from "./MyButton";
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { MyButton } from './MyButton';
 
 /**
  *
@@ -44,7 +45,7 @@ export function ResultsScene({ train_size, setTrainingCount, setSceneIndex,
   const PPV = true_positives / (true_positives + false_positives);
   const ACC = (true_positives + true_negatives) / (positives + negatives);
   const BA = (TPR + TNR) / 2;
-  const F1 = 2 * ((PPV * TPR) / (PPV + TPR))
+  const F1 = 2 * ((PPV * TPR) / (PPV + TPR));
 
   return (
     <View style={styles.container}>
@@ -60,12 +61,12 @@ export function ResultsScene({ train_size, setTrainingCount, setSceneIndex,
         <Text style={styles.text}>Balanced accuracy: {BA.toFixed(2) * 100}%</Text>
         <Text style={styles.text}>F1 score: {F1.toFixed(2)}</Text>
       </View>
-      <MyButton>
+      <MyButton
         frameStyle={styles.btn_frame}
         textStyle={styles.btn_text}
-        text="Learn Again"
+        text='Learn Again'
         onPress={resetAll}
-      </MyButton>
+      />
     </View>
   );
 }

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import { MyButton } from "./MyButton";
-import data from '../assets/cats.json'
+import { React, useEffect, useState } from 'react';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import { MyButton } from './MyButton';
+import data from '../assets/cats.json';
 
 /**
  * @param {Object} props
@@ -34,7 +34,6 @@ export function TrainScene({ training_count, train_size, setTrainingCount, scene
   useEffect(() => {
     // console.log(training_count);
     if (training_count === 0) {
-      ;
       setSceneIndex(scene_index + 1);
       // console.log(scene_index);
     }
@@ -89,18 +88,18 @@ export function TrainScene({ training_count, train_size, setTrainingCount, scene
           <Image style={styles.image} source={{ uri: current.url }} />
         </View>
         <View style={styles.btn_container}>
-          <MyButton>
+          <MyButton
             frameStyle={{ ...styles.btn_frame, backgroundColor: 'red' }}
             textStyle={styles.btn_text}
-            text="Not Grumpy"
+            text='Not Grumpy'
             onPress={() => handleButtonPress(false)}
-          </MyButton>
-          <MyButton>
+          />
+          <MyButton
             frameStyle={{ ...styles.btn_frame, backgroundColor: 'green' }}
             textStyle={styles.btn_text}
-            text="Grumpy"
+            text='Grumpy'
             onPress={() => handleButtonPress(true)}
-          </MyButton>
+          />
         </View>
       </View>
     );

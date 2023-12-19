@@ -1,3 +1,4 @@
+import React from 'react';
 import Slider from '@react-native-community/slider';
 import { StyleSheet, Text, View} from 'react-native';
 import { MyButton } from './MyButton';
@@ -18,7 +19,7 @@ export function MainScene({ train_size, setTrainSize, scene_index, setSceneIndex
     <View style={styles.container}>
       <View style={styles.text_frame}>
         <Text style={{ ...styles.text, 'color': 'white' }}> Greetings, young model!</Text>
-        <Text style={styles.text}>Let's teach you to classify</Text>
+        <Text style={styles.text}>Let&apos;s teach you to classify</Text>
         <Text style={{ ...styles.text, 'color': 'white', 'marginVertical': '7%' }}>grumpy cats</Text>
         <Text style={styles.text}>Choose training set size:</Text>
         <Text style={styles.slider_value}>{train_size}</Text>
