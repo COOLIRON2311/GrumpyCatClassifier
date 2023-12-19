@@ -60,6 +60,9 @@ export function TrainScene({ training_count, train_size, setTrainingCount, scene
     setTrainingSet(training_set);
   };
 
+  /**
+   * @param {boolean} value
+   */
   const handleButtonPress = (value) => {
     if (value) // 1
     {
@@ -86,18 +89,18 @@ export function TrainScene({ training_count, train_size, setTrainingCount, scene
           <Image style={styles.image} source={{ uri: current.url }} />
         </View>
         <View style={styles.btn_container}>
-          <MyButton
+          <MyButton>
             frameStyle={{ ...styles.btn_frame, backgroundColor: 'red' }}
             textStyle={styles.btn_text}
             text="Not Grumpy"
             onPress={() => handleButtonPress(false)}
-          />
-          <MyButton
+          </MyButton>
+          <MyButton>
             frameStyle={{ ...styles.btn_frame, backgroundColor: 'green' }}
             textStyle={styles.btn_text}
             text="Grumpy"
             onPress={() => handleButtonPress(true)}
-          />
+          </MyButton>
         </View>
       </View>
     );

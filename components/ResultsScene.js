@@ -60,11 +60,12 @@ export function ResultsScene({ train_size, setTrainingCount, setSceneIndex,
         <Text style={styles.text}>Balanced accuracy: {BA.toFixed(2) * 100}%</Text>
         <Text style={styles.text}>F1 score: {F1.toFixed(2)}</Text>
       </View>
-      <MyButton
+      <MyButton>
         frameStyle={styles.btn_frame}
         textStyle={styles.btn_text}
         text="Learn Again"
-        onPress={resetAll} />
+        onPress={resetAll}
+      </MyButton>
     </View>
   );
 }
