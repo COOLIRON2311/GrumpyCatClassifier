@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { MyButton } from './MyButton';
-import data from '../assets/cats.json';
 
 /**
  * @param {Object} props
@@ -40,11 +39,14 @@ export function TrainScene({ training_count, train_size, setTrainingCount, scene
   }, [training_count]);
 
   useEffect(() => {
-    const pos = data.filter(v => v.value).slice(0, Math.floor(train_size * 3 / 5));
-    const neg = data.filter(v => !v.value).slice(0, Math.floor(train_size * 2 / 5));
-    const train = shuffle(pos.concat(neg));
-    setTrainingSet(train);
-    setTrainingCount(train.length);
+    fetch('https://gist.githubusercontent.com/COOLIRON2311/ade75da4eca632b9090d5c4f454b18cd/raw/cats.json')
+      .then(response => response.json()).then(data => {
+        const pos = data.filter(v => v.value).slice(0, Math.floor(train_size * 3 / 5));
+        const neg = data.filter(v => !v.value).slice(0, Math.floor(train_size * 2 / 5));
+        const train = shuffle(pos.concat(neg));
+        setTrainingSet(train);
+        setTrainingCount(train.length);
+      });
   }, []);
 
   useEffect(() => {
